@@ -1,0 +1,422 @@
+<!DOCTYPE html> 
+
+<html> 
+
+<head> 
+
+    <style>
+        /* {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }*/
+
+        h1{
+            font-size: 50px;
+        }
+
+        h2{
+            font-size: 40px;
+            margin: 10px;
+            padding-left: 40px;
+        }
+
+        h3{
+            font-size: 30px;
+        }
+        p{
+            font-size: 26px;
+            padding: 5px;
+            padding-left: 40px;
+        }
+
+        ol, ul{
+            font-size: 24px;
+            margin: 5px;
+            padding-left: 44px;
+        }
+
+
+        li{
+            padding-left: 10px;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            width: 30%;
+        }
+
+        td{
+            font-size: 24px;
+            padding-left: 6px;
+        }
+        th{
+            font-size: 26px;
+            padding-left: 10px;
+        }
+
+        .stream{
+            width:80%;
+        }
+
+        .i_fuels{
+            text-align: center;
+            flex: 1 0 150px;
+            padding: 20px;
+            padding-right: 40px;
+        }
+
+        .i_text {
+            flex: 1 0 150px;
+        }
+
+        .investigation{
+            display: flex;
+        }
+
+        #img_fuels_container {
+            position: relative;
+        }
+
+        img{
+            width: 100%;
+        }
+        .summary_table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #overlay_legend{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 200px;
+        }
+    </style>
+
+<title>Page Title</title> 
+
+</head> 
+
+<body> 
+    <div class="stream">
+    <h1 style="text-align: center;"> Meeting the brief</h1> 
+    <hr>
+    <video width="100%" controls>
+        <source src="meeting the brief.mp4" type="video/mp4">
+    </video>
+    <div class="mt_brief">
+    <p><h4>Embedded system:</h4>
+        The embedded system logs data from soil moisture sensor and light sensor. You can press button A to start and stop logging and you can press button B to disable and enable the alarm.
+        The alarm is triggered when there are 24hrs of consecutive low soil moisture (10 seconds for demonstration purposes) and high light levels.
+        Additionally the embedded system dispays advice on OLED according to the soil moisture.
+    </p>
+    <p>
+        <h4>Model:</h4>
+        Please download pygame, matplotlib and numpy libraries on your machine before running main.py - my model.
+        Here is a screenshot from my model, you can terraform the model any way you like so you could try something like this.
+        <img src="pygamescrnshot.png" alt="model screenshot">
+    </p>
+    </div>
+
+    <h1 style="text-align: center;"> Investigation</h1> 
+    <div class = "investigation">
+        <div class= "i_text">
+            <p>
+                For my embedded system I wanted it to link in with the advanced part so I started to investigate what information 
+                on the forests can be useful for simulations.
+                After looking at multiple websites, I have decided to do something related to wildfires for my embedded and advanced part of the project - disaster risk modelling, what if simulations and adaptive system. 
+            </p>
+            <p> 
+                I have looked at multiple websites and researches done on wildfires. 
+                I have looked at how people approach preventing wildfires and what environmental factors influence the probability of a wildfire. 
+                In an article<sup>1</sup> that I found it suggests that 80-90% of wildfires are caused by humans. There are many government services in
+                different countries that work on preventing and controlling wildfire and the damage they cause. One of those departments in eu is 
+                <a href="https://forest-fire.emergency.copernicus.eu/" target="_blank">EFIS</a>. 
+                You can see the current situation on wildfires in 
+                <a href="https://joint-research-centre.ec.europa.eu/projects-and-activities/natural-and-man-made-hazards/fires/current-wildfire-situation-europe_en" target="_blank">EU wildfires research centre</a>.
+                From these websites I have realised that there are many factors to how fast the wildfire spreads and what the probability of it starting is.
+            </p>    
+            <div>
+                <h2>What are the factors involoved in the wildfire risk in an area?</h2>
+                
+                <ul>
+                    What type of vegetation your area has:
+                    <li>Type and dryness of grass</li>
+                    <li>Bushes</li>
+                    <li>Tree type</li>
+                    <li>Soil moisture and amount of solar radiation</li>
+                    Additionally, fire spreads faster depending on some other environment data like, wind direction and terrain type. e.g. fire spreads faster uphill.
+                </ul>
+            </div>
+        </div>
+        
+        <div class = "i_fuels">
+            <div id="img_fuels_container">
+                <img src="ireland_fuels.png" alt="Ireland's vegetation">
+                <img src="legend.png" alt="legend" id="overlay_legend">
+            </div>
+        </div>
+    </div>
+    <p style="text-align: center;">
+        for example this is the current situation in ireland &#8593;
+        <br>It is evident that there are a lot of grass vegetation and bushes in Ireland. There are forests in Wicklow and in the West regions of Ireland.
+        Even though there is plenty of precipitation and very little daylight it is important to take densly grown areas stated above in account as risk of wildfires in summer, when plants, soil and trees are drier. 
+    </p>
+    <p>
+        To collect the environment data above I can use and environment microbit kit. Microbit is an opensource, reliable and cheap embedded system provided by my school to use. It is perfect for my project becasue 
+        there is a lot of documentation on microbit, it user friendly and easy to code using block programming.
+    </p>
+    <hr>
+
+	<h1 style="text-align: center;">Plan and Design</h2>
+    <h2>Stakeholder and Users</h2>
+    <p>I hope the main users for my model and embedded system would be kids and students who would want to research wildfires and forests interactively.
+    Other stakeholders for my embedded system and model could be local authorities that would be interested in using it to predict the future wildfire.
+    In order for my users to be able to interact with my model easily it should have some sort of documention/explanation on how to use it - the brief. My model will have uniteractive visual interface.
+    Kids and students should be able to clearly see the terrain and being able to easily interact with using prompts/buttons or other ui. 
+    I think I am going to try making buttons and sliders as a way to interact with the model. To reduce number of clicks and make it more accessible to change the model 
+    I will add rain button to quickly simulate a what if scenario.</p>
+
+    <h2>Design Objectives</h2> 
+    <ol>
+        <li>
+            <h3>Basic requirements - Embedded system</h3> 
+            <p> My embedded system must have at least one digital and one analogue input. 
+                I thought that having just one analogue input like light levels is insufficient to make any predictions about wildfires.
+                I have laid out some objectives to match the brief:
+            </p>
+            <ol>
+                <li>
+                    Use the light sensor 
+                </li>
+                <li>
+                    Use the soil moisture sensor
+                </li>
+                <li>
+                    Use the button a or b to start and end the data recording, thus being my digital input.
+                </li>
+                
+            </ol>
+            <p>
+                This way I will have enough digital and analogue inputs to match the brief and using both light 
+                and soil moisture sensor I can make predictions on the vegetations dryness which is on of the 
+                most crucial parts of a wildfire spread speed.
+            </p>
+        </li>
+        <li>
+            <h3>Advanced requirements - Python simulation & modelling</h3>
+            <p>My Python simulation will simiulate wildfire spread speed and probability using agent based modelling. My objectives for this design are:</p>
+            <ul>
+                <li>
+                    Have tiles of ground as "agents" these agents will have their own attributes like moisture, temperature, vegetation type (grass, tall grass, bushes, trees), altitude. 
+                </li>
+                <li>
+                    Have a visual interface to interact with the tiles (the collection of tiles will be called the grid). I will utilise pygame library to display,
+                    be able to click on the tiles and change the tile attributes using the buttons on the side. Being able to use a "brush" to change the grid.
+                </li>
+                <li>
+                    Being able to "ignite" certain tiles. The adjacent tiles will increase in temperature if the adjacent tiles are ignited. The rate of change of temperature is dependant
+                    on the properties of the tile. For example a grass would catch on fire quicker than a tree.
+                </li>
+                <li>
+                    My simulation should be able to record the number of ticks it took for the wild fire to burn through the grid or to settle down.
+                    My simulation will raise patterns and show for example that a more wet grid would be slower to catch on fire or not burn down at all.                   
+                </li>
+                <li>
+                    As part of the system requirements I have to use some data from the embedded system. The data gathered by the microbit is saved in a csv file on the microbit. I plan 
+                    to manually copy the values from the ground gathered by microbit and put those values in the EMBEDDED_SYSTEM_DATA constant.
+                </li>
+                <br>
+                The aims above are related to Disaster Risk modelling and What If simulations.
+                <br>
+                <br>
+                <li>
+                    Also to satisfy the adaptive system requirements I would have the ability to trigger emergency. My model would send the fire trucks from the fire departments 
+                    and water the adjacent tiles to prevent spread of wildfire. I would have a slider or an input field to 
+                    adjust number of burning tiles required to trigger an alarm. My embedded system would beep every second if the soil moisture is too low. 
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+
+    <h2>My Other Ideas</h2>
+    <p>My other ideas were to write a simple program that would run through a csv file to predict how dangerous an area is against a wildfire risk.
+        It would use the light and soil moisture from the csv file and use an exponential curve to predict wildfire risk. The lower the soil moisture the higher 
+        the chance the plants are dead therefore the wildfire risk goes up.
+    </p>
+    <p>
+        Here is my models's flowchart
+        <img src="model flowchart.png" alt="model flowchart">
+        And Here is my embedded system flowchart:<img src="e_sys_flowchart.png" style="width: 100%;">
+    </p>
+    <hr>
+
+	<h1 style="text-align: center;"> Create</h2> 
+    <p> Disclaimer:
+        <br>I used Aseprite for my sprites. All of my sprites are made by me. <br>There is more information on pygame in references 7-8.
+    </p>
+    <ol>
+        The milestones that I went through to make my model and the embedded system,<br>
+        This is a huge a project, so it will be hard for me to describe everything in detail:
+        <li>
+            I started out with the model because I was more intrigued to make it than the embedded system. 
+        </li>
+        <li>
+            First, I tried displaying just the grid with tiles. 
+            I first looked at a couple of simple projects, examples of how to create a window with pygame and how to display an image - Ref 9-11. 
+            I started by initializing pygame, creating a screen, setting dimensions, a title, and setting a clock for refreshing the window. 
+            I created the grid class and the tile class to allow creating and manipulating the tiles and the grid easier.
+            <br>
+            Basically, how I made it work is that the Grid class would have the_grid variable that would be a two dimensional array with Tiles instanses.
+            In the draw method, each tiles' draw method would be called, being passed the position where that tile should draw its information on the screen. 
+            The tiles draw method then would proceed to draw itself according to its attributes. I started with just one attribute - altitude. My idea was to make a gradient of a brown colour, 
+            like on maps, to display the altitude of the tiles. I didnt know how to do that, so I had to look at how other people get a gradient between two colours on stackoverflow, reference 12.
+            <br>
+            After displaying the grid with tiles, which were rectangles of some colour representing tiles' height, I added all the other attributes:
+            <ol>
+               <li>
+                    Vegetation type.
+               </li> 
+               <li>
+                    Plants' dryness - a blue horizontal bar.
+               </li>
+               <li>
+                    Burning.
+               </li>
+            </ol>
+            To display a sprite using the pygame library, I needed to load the image first, usind pygame.image.load() then create a pygame.Rect(), then I need to call screen.blit(image, rect) 
+            where rect is basically the "destination" for the image.
+            <br>
+            The problems I encountered:
+            <ul>
+                <li>I struggled to make a gradient of two colours.
+                </li>
+                <li>I had a tough time figuring out why the tiles are displayed in a weird way, as it turned out I messed up when I had forgot to multiply x and y by tile dimensions so the tiles were basically displayed at
+                    (0, 0), (0, 1), (0, 2) pixels instead of (0, 0*32), (0, 1*32), (0, 2*32).
+                </li>
+            </ul>
+        </li>
+        <li>
+            I implemented displaying buttons using the video below. I created a separate class that would handle buttons and wrote child classes that were more specific to different types of buttons like switching modes,
+            switching simulation on and off, covered by the pause button, and sliders.
+        </li>
+        <li>
+            To implement brushes, I needed not just the buttons but a class that would handle "global" variables, like what mode the brush is currently in, etc.
+            I also knew that I will be writing a lot of text so I made a draw_text method to display text.
+        </li>
+        <li>
+            To actually change the tiles when they are pressed on, I checked if the mouse button is pressed in the main loop, and if the mouse position is in the grid and then I would change that grids tile's attributes.
+        </li>
+        <li>
+            To add simulation part of the model I:
+            <ul>
+                <li>
+                    Created a tick and update class in the tile class. Tick "predicts" the next values of the tile and update updates the tiles. More explanation on everything is in the comments 
+                    in the code becuase I couldnt fit in everything in here.
+                </li>
+                <li>
+                    I drew fire trucks and departments, imported them, created send_trucks, move_trucks and draw_trucks in control class. I also drew the alarm and added it in the game using alarm method. - 
+                    This is the adaptive system requirement.
+                </li>
+                <li>
+                    I added rain to create a what if scenario.
+                </li>
+            </ul>
+        </li>
+        <li> 
+            After I finsished with the modelling part I made my microbit. I encountered no issues with making my microbit code except some technical issues unrelated to microbit itself but
+            rather the coding environment. Some OLED extension didnt show up for me even though it installed with the microbit environment kit extension. I had to reinstall it manually.
+        </li>
+    </ol>
+    
+    <h3>Testing</h3>
+    <p>As part of my testing I checked for different test case positions for tiles and got an error so I implemented a check key method in the grid class to avoid errors. 
+    Also as part of my testing procces I capped dryness at 1 and temperture at MAX TEMP constant.</p>
+    <hr>
+
+	<h1 style="text-align: center;"> Evaluation</h2> 
+    <hr>
+    <p>
+        I am partially satisfied with my embedded system and my model. The embedded system utilised minimal sensors and is not very multi-functional. I think my embedded system covers
+        all the requirements, but it is not very sofisticated. It uses a simple algorithm and could be improved by adding a more complex set of actions like displaying a variaty of advice
+        based on the soil moisture or having different beeps depending on the severity of the situation. Additionally, it would be good to be able to change the required time to trigger 
+        an alarm using some kind of potentiometer or a slider. That would make it easier for a user to calibrate their embedded system the way they like. 
+        <br>
+        The model also has flaws. My constants are not adjusted properly. If you ignite a very wet forest it will still burn down, just much slower, which doesnt really happen in real life. The results from the simulation
+        are not very accurate and are overexagguraing the fires strength.
+        Also, I think it was really stupid to put fire department and fire truck logic into the Control class, as all the direct tiles 
+        changes should be done through grid class. This mistake doesnt affect the user in any way but to me its just bad coding and would 
+        make it even hardert than it already is to understand the code.
+        <br>
+        Additionally, I would love to add more general buttons to my code to make it easier to change the grid quicker, 
+        like the "Drought scenario" button, where all the tiles' moisture would be set to 0(this would be the opposite of the rain button). 
+        It is ideal to decrease the number of clicks it is required for the user to achieve whatever they are trying to change in the grid. 
+        My stakeholders and users would be kids and students; it is expected that children have a low attention span, so it only makes sense to make the program as user friendly as possible. 
+        I also would love to import this program in a website in the future so that people could access this program more easily.
+    </p>
+
+	<h1 style="text-align: center;"> References</h2> 
+	<ol>
+		<li> <a href="https://www.scientificamerican.com/article/the-worst-wildfires-are-started-by-people-heres-how/" target="_blank">https://www.scientificamerican.com/article/the-worst-wildfires-are-started-by-people-heres-how/</a></li>
+		<li> <a href="https://joint-research-centre.ec.europa.eu/projects-and-activities/natural-and-man-made-hazards/fires/current-wildfire-situation-europe_en" target="_blank">https://joint-research-centre.ec.europa.eu/projects-and-activities/natural-and-man-made-hazards/fires/current-wildfire-situation-europe_en</a></li>
+		<li> <a href="https://forest-fire.emergency.copernicus.eu/apps/fire.risk.viewer/" target="_blank">https://forest-fire.emergency.copernicus.eu/apps/fire.risk.viewer/</a></li>
+		<li> <a href="https://forest-fire.emergency.copernicus.eu/" target="_blank">https://forest-fire.emergency.copernicus.eu/</a></li>
+        <li> <a href="https://thepihut.com/products/sparkfun-qwiic-soil-moisture-sensor" target="_blank">https://thepihut.com/products/sparkfun-qwiic-soil-moisture-sensor </a>- the image of the soil moisture sensor</li>
+        <li> <a href="https://tempest.earth/resources/how-moist-should-soil-be/" target="_blank">https://tempest.earth/resources/how-moist-should-soil-be/</a> </li>
+        <li> <a href="https://www.pygame.org/news" target="_blank">https://www.pygame.org/news</a> </li>
+        <li> <a href="https://www.pygame.org/docs/" target="_blank">https://www.pygame.org/docs/</a> </li>
+        <li> <a href="https://www.pygame.org/docs/tut/newbieguide.html" target="_blank">https://www.pygame.org/docs/tut/newbieguide.html</a> </li>
+        <li> <a href="https://www.youtube.com/watch?v=9uoXk8O18Mw" target="_blank">https://www.youtube.com/watch?v=9uoXk8O18Mw - how to draw images</a></li>
+        <li> <a href="https://www.youtube.com/watch?v=G8MYGDf_9ho" target="_blank">https://www.youtube.com/watch?v=G8MYGDf_9ho - understanding mouse in pygame</a> </li>
+        <li> <a href="https://stackoverflow.com/questions/25668828/how-to-create-colour-gradient-in-python" target="_blank">https://stackoverflow.com/questions/25668828/how-to-create-colour-gradient-in-python - understanding how to make a color gradient</a> </li>
+    </ol>
+    <hr>
+    <h1 style="text-align: center;">Summary Word Count  </h1>
+    <hr>
+    <div class="summary_table">
+        <table style="text-align: left;">
+            <tr>
+                <th>Section</th>
+                <th>Word Count</th>
+            </tr>
+            <tr>
+                <td>Meeting the brief</td>
+                <td>110</td>
+            </tr>
+            <tr>
+                <td>Investigation</td>
+                <td>356</td>
+            </tr>
+            <tr>
+                <td>Plan and Design</th>
+                <td>699</td>
+            </tr>
+            <tr>
+                <td>Create</th>
+                <td>750</td>
+            </tr>
+            <tr>
+                <td>Evaluation</td>
+                <td>354</td>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td>2269</td>
+            </tr>
+        </table>
+    </div>
+</body> 
+</div>
+
+</html> 
+
+ 
